@@ -1,0 +1,83 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace "com.ads.admob"
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+//    implementation 'com.anjlab.android.iab.v3:library:1.1.0'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'androidx.lifecycle:lifecycle-process:2.2.0'
+    implementation 'com.android.billingclient:billing-ktx:7.1.1'
+
+
+    def lifecycle_version = "2.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.6.2"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    api "io.arrow-kt:arrow-core:1.2.1"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0"
+
+
+    //admob
+    implementation 'com.google.android.gms:play-services-ads:24.0.0'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.1.0'
+    implementation 'com.google.android.gms:play-services-appset:16.1.0'
+    implementation 'com.google.android.gms:play-services-basement:18.4.0'
+    //fb sdk
+    implementation 'com.facebook.android:facebook-android-sdk:18.0.2'
+
+    implementation 'com.airbnb.android:lottie:5.0.2'
+
+    implementation 'com.google.android.ump:user-messaging-platform:2.1.0'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.datdv96'
+                artifactId = 'sdk-unisoft'
+                version = '1.0.0'
+            }
+        }
+    }
+}

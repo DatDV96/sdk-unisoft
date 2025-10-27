@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lfo_navigation"
+    app:startDestination="@id/LFOFragment">
+
+    <fragment
+        android:id="@+id/LFOFragment"
+        android:name="com.ad.sample.language.LFOFragment"
+        android:label="LFOFragment" >
+        <action
+            android:id="@+id/action_LFOFragment_to_LFOSelectFragment"
+            app:destination="@id/LFOSelectFragment">
+
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/LFOSelectFragment"
+        android:name="com.ad.sample.language.LFOSelectFragment"
+        android:label="LFOSelectFragment" >
+    </fragment>
+</navigation>
