@@ -62,8 +62,6 @@
     public <methods>;
     public <fields>;
 }
--keep class com.ads.admob.ads.bannerAds.** { *; }
--keep class com.ads.admob.ads.nativeAds.** { *; }
 -keepclassmembers class *.R$ {
     public static <fields>;
 }
